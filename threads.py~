@@ -1,0 +1,15 @@
+#!/usr/bin/env python
+
+import threading 
+
+class ThreadClass(threading.Thread):
+    
+    def __init__(self,valor):
+        self.valor = valor
+        
+    def run(self):
+        print "Thread valor %d " % self.valor
+
+
+t1 = ThreadClass(1)
+t1 = ThreadClass(2)

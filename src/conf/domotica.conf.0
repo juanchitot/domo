@@ -1,0 +1,17 @@
+- !RealTimeCore
+  - []
+  - channels: {}
+    event_action_mapper: {}
+    executer_core: !ExecuterCore
+    - []
+    - actions: {}
+      ports: {}
+    listener_core: !ListenerCore
+    - []
+    - in_ports: {}
+      listens: {}
+      listens_tail: []
+      out_ports: {}
+- !ControlCore
+  - []
+  - map_objects: {}

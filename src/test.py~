@@ -1,0 +1,43 @@
+#!/usr/bin/env python
+
+
+from PyQt4.QtCore import QObject,QEvent
+
+class Test:
+    
+    def func(self,valor):
+        print "id %s, class %s, valor %s " % (id(self),self.__class__.__name__,valor)
+
+class Test2:
+    def set_call(self):
+        print "%s %s" % (self.__class__.__name__,self)
+    def cal(self):
+        print "%s %s" % (self.__class__.__name__,self)
+
+
+a = {'a':1,'b':2}
+print 1 in a
+
+# t = Test()
+# o = QObject()
+
+
+# instancemethod = type(t.func)
+
+# o.cal = instancemethod(Test2.set_call,o,Test)
+# print o.cal
+# print o
+# o.cal()
+
+# print "%s" % Test2.cal
+# print "%s" % t.func
+# print "%s" % Test.func
+# t.cal = Test2.cal
+# print "%s" % t.cal
+# t2 = Test2()
+# print QEvent.Type.
+# if hasattr(t2,'set_call'):
+#     print type(type( getattr(t2,'set_call')).__name__)
+#     print getattr(t2,'set_call')
+
+

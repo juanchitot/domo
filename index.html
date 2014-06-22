@@ -1,0 +1,158 @@
+<html>
+<head>
+  <style>
+
+    
+    
+    .system_button{
+    
+    color:transparent;
+    background-color:white;
+    
+    border-style:grove;
+    border-color:blue;
+    border-width:thin;
+    
+    width:100;
+    height:50;
+    }
+    
+    .camera_image{    
+    width:100;
+    height:60;
+    }
+    
+    .td_main_map{
+    text-align:center;
+    }
+    .main_map{
+    width:550;
+    height:350;
+    
+    }
+    
+    .td_camera{
+    text-align:center;
+    border-style:solid;
+    border-width:thin;
+    border-color:white;
+    }
+
+    .td_system,.td_camera,.td_hour, .td_controls{
+    padding: 8px  8px  8px  8px;
+    }
+    
+    .td_controls{
+    text-align:center;
+    border-style:solid;
+    border-width:thin;
+    border-color:white;
+    }
+    
+    
+    .td_system{
+    text-align:center;
+    border-style:solid;
+    border-width:thin;
+    border-color:white;
+    }
+    
+    .td_hour{
+    text-align:center;
+    border-style:solid;
+    border-width:thin;
+    border-color:white;
+    }
+    .main_display_input{
+    border-style:none;
+    
+    width:120;
+    height:80;
+    color:blue;
+    text-align:middle;
+    font-size:40pt;
+    font-weight:bold;
+    
+    text-align:center;
+    
+    }
+    .hour_input{
+    border-style:none;
+    
+    width:120;
+    height:40;
+    color:blue;
+    text-align:middle;
+    font-size:x-large;
+    font-weight:bold;
+    text-align:center;
+    
+    }
+    .td_footer_controls{
+    text-align:center;
+    border-style:solid;
+    border-width:thin;
+    border-color:white;
+    
+    }
+
+    .main_table{
+    background-color:blue;
+    width:800;
+    height:600;
+    
+    border-spacing:10px;
+    border-style:none;
+    border-color:white;
+    border-width:medium;
+    
+    }
+    
+  </style>
+</head>
+
+<body style="background-color:black;">
+<table 
+   class="main_table"
+   valign="middle"
+   align="center">
+  <tr>
+    <td colspan="10">&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="td_system"><input type="button" class="system_button" value="Temperatura"></td>
+    <td class="td_system"><input type="button" class="system_button" value="Iluminacion"></td>
+    <td class="td_system"><input type="button" class="system_button" value="Audio"></td>
+    <td class="td_system"><input type="button" class="system_button" value="Video"></td>
+    <td class="td_system"><input type="button" class="system_button" value="Seguridad"></td>
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+    <td >&nbsp;</td>
+  </tr>
+  <tr>
+    <td class="td_camera"><img class="camera_image" src="camera.jpg"> </td>
+    <td rowspan="4" colspan="8" class="td_main_map"><img class="main_map" src="main_map.jpg"></td>
+    <td class="td_controls">holslsls</td>
+  </tr>
+  <tr>
+    <td class="td_camera"><img class="camera_image" src="camera.jpg"></td>
+    <td class="td_controls" rowspan="2"  ><input value="22 *" class="main_display_input"></td>
+  </tr>
+  <tr>
+    <td class="td_camera"><img class="camera_image" src="camera.jpg"></td>
+  </tr>
+  <tr>
+    <td class="td_camera" ><img class="camera_image" src="camera.jpg"></td>
+    <td class="td_controls">controll</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td colspan="8" class="td_footer_controls" >asdfas </td>
+    <td class="td_hour"><input class="hour_input" value="12:00 pm"></td>
+  </tr>
+</table>
+</body>
+</html>

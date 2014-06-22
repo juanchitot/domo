@@ -1,0 +1,17 @@
+from real_time_core import *
+from listen_bus import ListenBus
+
+
+class Domotica:
+    
+    def __init__(self):
+        self.real_time_core=RealTimeCore.get_instance()
+        
+
+d = Domotica()
+l = ListenBus()
+l.setup(0)
+l1 = ListenBus()
+l1.setup(1)
+d.real_time_core.listener_core.add_listen(l)
+d.real_time_core.listener_core.add_listen(l1)

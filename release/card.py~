@@ -1,0 +1,22 @@
+import re
+
+class Card:
+    
+    __VALID_CARD_ID = '^\d\d$' 
+    
+    #% i).decode("hex")  
+    
+    def __init__(self,id):        
+        self.__id = id
+    
+    def __setattr__(self,name,value):
+        if name == '__id' :
+            if re.match(self.__VALID_CARD_ID, value) :
+                self.__dict__[name] = value
+            else :
+                raise TypeError, 'Valor %s invalido para attributo id'
+            
+    def get_id(self):
+        return self.__id
+    
+    

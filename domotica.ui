@@ -1,0 +1,83 @@
+<ui version="4.0" >
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>683</width>
+    <height>537</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>26</y>
+     <width>683</width>
+     <height>492</height>
+    </rect>
+   </property>
+   <widget class="QPushButton" name="botton_sss" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>280</y>
+      <width>75</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>ssss</string>
+    </property>
+   </widget>
+   <widget class="QLCDNumber" name="display_lcd" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>250</y>
+      <width>64</width>
+      <height>23</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>683</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuMain" >
+    <property name="title" >
+     <string>main</string>
+    </property>
+    <addaction name="actionHola" />
+   </widget>
+   <addaction name="menuMain" />
+  </widget>
+  <widget class="QStatusBar" name="statusbar" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>518</y>
+     <width>683</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <action name="actionHola" >
+   <property name="text" >
+    <string>hola</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

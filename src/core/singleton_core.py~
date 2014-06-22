@@ -1,0 +1,9 @@
+class SingletonCore:
+    
+    instance = None
+    
+    @classmethod
+    def get_instance(cls):
+        if cls.instance == None:
+            cls.instance = cls()
+        return cls.instance

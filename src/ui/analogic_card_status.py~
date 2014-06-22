@@ -1,0 +1,14 @@
+
+
+
+
+
+class AnalagicCardStatus(QFrame, Ui_Frame):
+    
+    def __init__(self,widget,card_id):        
+        QFrame.__init__(self,widget)
+        self.setupUi(self)
+        self.card_id = card_id
+        self.table_name.setText( "Digital Card (%s)" % card_id )
+        self.client_core = widget.client_core
+        self.connect

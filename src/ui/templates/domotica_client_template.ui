@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Domotica</class>
+ <widget class="QWidget" name="Domotica">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>878</width>
+    <height>685</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::StrongFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Domotica</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(255, 255, 255);</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <property name="leftMargin">
+    <number>30</number>
+   </property>
+   <property name="topMargin">
+    <number>30</number>
+   </property>
+   <property name="rightMargin">
+    <number>20</number>
+   </property>
+   <property name="bottomMargin">
+    <number>20</number>
+   </property>
+   <item row="1" column="0">
+    <widget class="FloatingWindow" name="floating_window">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+background-color:rgb(216, 255, 238);</string>
+     </property>
+     <property name="floating">
+      <bool>true</bool>
+     </property>
+     <property name="features">
+      <set>QDockWidget::DockWidgetClosable|QDockWidget::DockWidgetMovable</set>
+     </property>
+     <property name="allowedAreas">
+      <set>Qt::AllDockWidgetAreas</set>
+     </property>
+     <widget class="QWidget" name="connection_window">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </widget>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QStackedWidget" name="main_stack">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Plain</enum>
+     </property>
+     <property name="midLineWidth">
+      <number>0</number>
+     </property>
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="user_page_stack">
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="HomeMap" name="home_map" native="true"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="admin_page_stack">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QTabWidget" name="admin_tabs">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>600</width>
+           <height>500</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <stylestrategy>PreferDefault</stylestrategy>
+          </font>
+         </property>
+         <property name="mouseTracking">
+          <bool>true</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="tabPosition">
+          <enum>QTabWidget::North</enum>
+         </property>
+         <property name="tabShape">
+          <enum>QTabWidget::Rounded</enum>
+         </property>
+         <property name="currentIndex">
+          <number>5</number>
+         </property>
+         <property name="elideMode">
+          <enum>Qt::ElideNone</enum>
+         </property>
+         <property name="usesScrollButtons">
+          <bool>true</bool>
+         </property>
+         <widget class="AdminHomeMap" name="tab_admin_home_map">
+          <attribute name="title">
+           <string>Editar Mapa</string>
+          </attribute>
+         </widget>
+         <widget class="AdminHomeLights" name="tab_admin_home_lights">
+          <attribute name="title">
+           <string>Editar Luces</string>
+          </attribute>
+         </widget>
+         <widget class="AdminHomeHeating" name="tab_admin_home_heating">
+          <attribute name="title">
+           <string>Editar Climatizacio</string>
+          </attribute>
+         </widget>
+         <widget class="AdminLight" name="tab_admin_light">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <attribute name="title">
+           <string>Luces</string>
+          </attribute>
+         </widget>
+         <widget class="AdminHeatingMaps" name="tab_admin_heating_maps">
+          <attribute name="title">
+           <string>Maps Climatizacion</string>
+          </attribute>
+         </widget>
+         <widget class="AdminDeviceMapper" name="tab_admin_device_mapper">
+          <attribute name="title">
+           <string>Dispositivos</string>
+          </attribute>
+         </widget>
+         <widget class="PortsStatus" name="tab_ports_status">
+          <attribute name="title">
+           <string>Puertos</string>
+          </attribute>
+         </widget>
+         <widget class="ManageCards" name="tab_manage_cards">
+          <attribute name="title">
+           <string>Placas</string>
+          </attribute>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+  <action name="actionNombre">
+   <property name="text">
+    <string>nombre</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>FloatingWindow</class>
+   <extends>QDockWidget</extends>
+   <header location="global">ui.floating_window</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ManageCards</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.manage_cards</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>PortsStatus</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.ports_status</header>
+   <container>1</container>
+   <slots>
+    <slot>tab_changed()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>AdminLight</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.admin_light</header>
+   <container>1</container>
+   <slots>
+    <slot>tab_changed()</slot>
+   </slots>
+  </customwidget>
+  <customwidget>
+   <class>HomeMap</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.home_map</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AdminHomeMap</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.admin_home_map</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AdminHomeLights</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.admin_home_lights</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AdminHomeHeating</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.admin_home_heating</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AdminHeatingMaps</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.admin_heating_maps</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AdminDeviceMapper</class>
+   <extends>QWidget</extends>
+   <header location="global">ui.admin_device_mapper</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../resources.qrc"/>
+ </resources>
+ <connections/>
+ <slots>
+  <slot>synchronize_ui()</slot>
+ </slots>
+</ui>

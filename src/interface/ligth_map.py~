@@ -1,0 +1,22 @@
+import yaml
+from configurator.domotica_serialize import DomoticaSerialize
+
+class LigthMap(DomoticaSerialize):
+    
+    serializable_data = {'name':'name',
+                         'comment':'comment',
+                         'sensors_ports':'sensors_ports',
+                         'ligth_ports':'ligth_ports',
+                         'on_time':'on_time',
+                         'off_time':'off_time'}
+    
+    def __init__(self):
+        self.name=""
+        self.comment=""
+        self.sensors_ports=[]
+        self.ligth_ports=[]
+        self.on_time=None
+        self.off_time=None
+
+yaml.add_constructor(u'!LigthMap',LigthMap.yaml_constructor)
+yaml.add_representer(LigthMap, LigthMap.yaml_representer)

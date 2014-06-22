@@ -1,0 +1,16 @@
+import logging
+
+
+class DomoticaException(Exception):
+    
+    def log(self,local_logger=None):
+        print "entro a loguear una excepcion en domotica exception"
+        print self
+        if local_logger :
+            local_logger.log(logging.ERROR,self.message)
+        else:
+            base_logger = logging.getLogger('domotica')
+            base_logger.log(logging.ERROR,self.message)
+            
+
+    

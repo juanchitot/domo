@@ -1,0 +1,16 @@
+#!/usr/bin/python  -dv
+
+import sys
+
+
+from PyQt4 import QtCore, QtGui
+
+from PyQt4.QtGui import QApplication, \
+    QStyleFactory
+
+from PyQt4.QtCore import QTranslator
+
+from ui.domotica_client import DomoticaClient
+
+from ui.admin_home_map import AdminHomeMap
+

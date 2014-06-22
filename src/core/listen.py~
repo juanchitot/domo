@@ -1,0 +1,19 @@
+from card.bus import Bus
+from threading import Thread
+
+class Listen(Thread):
+
+    def __init__(self):
+        Thread.__init__(self)
+        self.in_ports=None
+        self.out_ports=None
+        
+    def run(self):
+        pass
+    
+    def get_in_ports(self):
+        return self.in_ports
+    
+    def get_out_ports(self):
+        return self.out_ports
+    

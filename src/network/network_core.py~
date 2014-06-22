@@ -1,0 +1,57 @@
+import time
+import socket
+
+from network.domotica_tcp_server import DomoticaTcpServer
+from network.network_exception import NetworkException
+
+from core.control_core import ControlCore
+from network.network_handler import TcpHandler
+
+class NetworkCore:
+
+    HOST = '192.168.1.12'
+    PORT = 50007
+    
+    network = None
+    
+    def __init__(self):
+        self.running = False
+        
+        try:
+            self.server = DomoticaTcpServer((self.HOST,self.PORT),TcpHandler)
+        except socket.error:
+            raise NetworkException(
+"""Error: la direccion/puerto %s:%s esta en uso""" % (self.HOST,self.PORT))
+
+
+    def get_instance():
+        if NetworkCore.network == None:
+            NetworkCore.network = NetworkCore()
+        return NetworkCore.network  
+    get_instance=staticmethod(get_instance)
+    
+    def initialize(self,domotica):
+        self.core = domotica
+        self.control = domotica.control
+        self.server.control = self.control
+
+    def start(self):
+        self.running = True
+        while self.running :
+            #         (request,addr) = self.server.get_request()
+            #         self.server.verify_request(request,addr)
+            #         self.server.process_request(request,addr)
+            self.server.handle_request()
+    
+    def shutdown(self):
+        self.running = False
+
+
+        
+if __name__ == '__main__' :    
+    try:
+        netcore = NetworkCore()
+    except Exception, e:
+        print e
+    else:
+        netcore.start()

@@ -1,0 +1,28 @@
+import yaml
+from configurator.configurator_exception import ConfiguratorException
+
+class DomoticaConfigurator:
+    
+    MAIN_CONFIG_FILE = 'conf/domotica.conf'
+    
+    def __init__(self):        
+        self.open_conf_file()
+
+    def load_configuration(self):
+#         try :
+        yaml.load(self.conf_file) 
+#         except Exception, e:
+#             raise e
+#             raise ConfiguratorException('No se pudo leer la configuracion')
+    
+    def save_configuration(self,RTCore):        
+        try :
+             yaml.dump(RTCore,self.conf_file) 
+        except Exception, e:
+            raise ConfiguratorException('No se pudo guardar la configuracion %s' % e.message)
+         
+    def open_conf_file(self):
+        try :
+            self.conf_file = open(self.MAIN_CONFIG_FILE,'r+')
+        except IOError:
+            raise ConfiguratorException('No se pudo abrir el archivo de configuracion')

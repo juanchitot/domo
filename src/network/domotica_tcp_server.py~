@@ -1,0 +1,13 @@
+from SocketServer import TCPServer
+
+class DomoticaTcpServer(TCPServer):
+    
+    def __init__(self,server_address, RequestHandlerClass):
+        print "entro al init del domoticatcpserver"
+        TCPServer.__init__(self,server_address,RequestHandlerClass)
+        self.control = None
+        
+#     def finish_request(self,request,addr):
+#         handler = self.RequestHandlerClass(request,addr,self)
+#         handler.control = self.control
+#         handler.handle()

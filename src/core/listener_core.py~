@@ -1,0 +1,11 @@
+from listen import *
+from listen_bus import *
+
+class ListenerCore:
+    
+    def __init__(self):
+        self.listens = {}
+    
+    def add_listen(self,listen):
+        self.listens[listen.get_id()] = listen
+        self.listens[listen.get_id()].start()

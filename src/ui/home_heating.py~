@@ -1,0 +1,7 @@
+from ui.home_module import HomeModule
+
+class HomeHeating(HomeModule):
+    
+    instance = None
+        
+        

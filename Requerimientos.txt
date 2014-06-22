@@ -1,0 +1,186 @@
+
+
+
+------------- Nivel 1 
+ * Manejar 2 canillas con un sensor de temperatura
+
+ * Manejar aires acondicionados, con entrada de aire 
+   exterior y calefaccion, mas las paletas 
+   en los ductos de ventilacion
+ * Prender una luz durante un periodo luego
+   de detectar movimiento 
+ * Al detectar movimiento poner musica
+ * A determinada hora del dia habrir y cerrar las persianas
+ * En caso de haber X luminosidad habrir o cerrar las ventanas
+  
+     
+Casa
+	eventos/acciones
+	usuarios
+
+Ambientes
+	eventos/acciones
+	puertos entrada/ puertos salida
+
+
+
+ExecuterModule
+	
+	inports outports
+	events actions
+	usuarios
+
+
+
+Funcionamiento Calefaccion
+
+Nombres:
+	Calefactor = C1
+	Aires acondicionados = A1 A2
+	Forzador = F1
+	Tomas de aire = TM_EXT
+	      	      	TM_INT
+	Salidas de aire = SA_COS
+		   	  SA_BA
+			  SA_LIV
+			  SA_PIE
+			  
+	Sensores = S_CAM
+		 S_EXT 6
+		 S_PIE 2
+		 S_COS 1
+		 S_CAM 5
+		 S_BA 4
+
+
+Casos de ajustes de variables:      
+      
+| MAIN_TEMP_HOME - MAIN_TEMP_CONF | > DELTA_WAIT :
+  
+		 MAIN_TEMP_HOME < MAIN_TEMP_CONF -> hay que subir la temperatura
+	       
+			Si estoy en modo ventilacion calor
+			
+				{aire apagado }
+				{calefaccion apagada }
+				
+				 1- temp ultima iteracion < temp actual, espero
+							   	 
+			   	 2- Puedo abrir el ducto ?
+				     si la ultima vez no hice nada abro mas el ducto
+				 
+				 3-  Puedo abrir mas el ducto? 
+				     abro mas el ducto de toma de aire exterior
+				 
+				 4-  Puedo aumentar la potencia del forzador?
+				     aumento la potencia del forzador
+				 
+	       
+			Si Estoy en modo calor 
+			   	 
+			       {aire apagado}
+			       
+			       1- la temp de la ultima iteracion < temp actual, espero
+			       			       
+ 			       2- si la ultima iteracion no se hizo nada ahora abro 
+			       mas el ducto.
+			       {calefaccion en minimo, toma exterior cerrada}
+			       
+			       2- Aumento la potencia del forzador
+			       
+			       3- si el ultimo cambio solo fue abrir mas el ducto
+			       ahora aumento la temperatura de la camara       
+	       
+			Si estoy en modo frio.
+			
+				{calefaccion apagada}
+				
+				1- temp ultima iteracion < temp actual espero.
+				
+				2- si la ultima iteracion no hice nada cierro mas el ducto.
+				{cierro el ducto toma exterior}
+				
+				3- Si no es la primera vez que ajusto, subo la temperatura de la camara.
+				
+				4- Bajo la potencia del forzador
+				
+			
+				
+		MAIN_TEMP_HOME > MAIN_TEMP_CONF -> hay que bajar la temperatura	
+		
+			Si estoy en modo ventilacion frio
+			
+				1- temp ultima iteracion > temp actual espero
+				
+				2- abro mas el ducto
+				
+				3- abro mas el ducto exterior
+				
+				4- aumento la potencia del forzador
+		
+			Si estoy en modo calor.
+			   
+				1- Temp ultima iteracion > temp actual espero.
+				
+				2- si la ultima iteracion no hice nada.
+				cierro el ducto.
+				
+				3- si la ultima iteracion cerre el ducto.
+				bajo la temperatura de la camara
+				
+				4- bajo la potencia del forzador
+				
+				5- abro la entrada de aire exterior
+				
+			Si estoy en modo frio.
+			
+				1- temp ultima iteracion > temp actual espero
+				
+				2- Si la ultima iteracion no hice nada.
+				abro mas el ducto.
+				
+				3- aumento la potencia del forzador
+				
+				4- bajo la temperatura de la camara
+				
+				
+			
+
+estoy en modo calor:
+      
+     TEMP_EXT < MAIN_TEMP_CONF and not estoy en modo ventilacion
+     
+     
+
+estoy en modo frio:
+     
+     TEMP_EXT > MAIN_TEMP_CONF and not estoy en modo ventilacion
+
+
+estoy en modo ventilacion:
+      
+      | MAIN_TEMP_CONF - TEMP_EXT | < DELTA_VENTILACION
+
+estoy en modo ventilacion calor
+      
+      modo ventilacion y MAIN_TEMP_CONF < TEMP_EXT
+
+estoy en modo ventilacion frio:
+      
+      modo ventilacion y MAIN_TEMP_CONF > TEMP_EXT
+				
+
+
+Constantes:
+	
+	MAX_TEMP_CAMARA -> Maxima temperatura de corte de la camara.
+	
+
+Variables:
+	
+	MAIN_TEMP_HOME -> Temperatura central de la casa.
+        MAIN_TEMP_CONF -> Temperatura que debe mantener la casa
+	TEMP_CAMARA -> 
+	TEMP_AMB_I -> Temperatura del ambiente I
+	TEMP_AMB_I_CONF -> Temperatura configurada para el ambiente I
+	TEMP_EXT -> Temperatura del exterior

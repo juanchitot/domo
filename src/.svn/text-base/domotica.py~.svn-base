@@ -1,0 +1,6 @@
+
+
+app = QtGui.QApplication(sys.argv)
+f = DomoticaClient()
+f.show()
+app.exec_()

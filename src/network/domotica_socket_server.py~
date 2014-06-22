@@ -1,0 +1,3 @@
+from SocketServer import TCPServer
+
+class DomoticaServer(TCPServer

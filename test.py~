@@ -1,0 +1,45 @@
+#!/usr/bin/python
+# import time
+# import serial
+
+# ser = serial.Serial(0,baudrate=1152000)
+
+# #for i in range(2,128,2):
+# #	ser.write('%02x' % i)
+# #	if ser.inWaiting() :
+# #		print
+# count1 = 0
+# count2 = 0
+# ser.write('\x00')
+# print '%f' % time.time()
+# while not ser.inWaiting() : 
+# 	count1 += 1
+# print '%f' % time.time()
+# print 'count 1 = %d' % count1
+# print (ser.read(ser.inWaiting())).encode('hex')
+# ser.write('\x16')
+# print '%f' % time.time()
+# while not ser.inWaiting() : 
+# 	count2 += 1
+# print '%f' % time.time()
+# print 'count 2 = %d' % count2
+# print (ser.read(ser.inWaiting())).encode('hex')
+
+class test:
+	
+	__slots__ = ['hola','chau']
+	
+	def __init__(self):		
+		self.hola = [1,2,3,4]
+		self.chau = 'valor2'
+	
+class test_1(test):
+	
+	__slots__ = ['hola']
+	
+	def __init__(self,parent):
+		for slt in test_1.__slots__ :
+			if slt in test.__slots__ :
+				setattr(self,slt,getattr(parent,slt))
+	
+					
