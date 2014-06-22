@@ -13,11 +13,15 @@
           8: !DebugCard
           - [Bus_0, 8]
           - {}
+          12: !DebugCard
+          - [Bus_0, 12]
+          - {}
           40: !Analogic
           - [Bus_0, 40]
           - {}
     event_action_mapper: {CE_12727217262209300: 12727217262209600, CE_12727217262210610: 12727217262210810,
-      CE_12727222656715788: 12727222656716330, CE_12727222656718190: 12727222656718550}
+      CE_12727222656715788: 12727222656716330, CE_12727222656718190: 12727222656718550,
+      CE_12735827844283112: 12735827844283640, CE_12735827844285430: 12735827844285778}
     executer_core: !ExecuterCore
     - []
     - actions:
@@ -39,6 +43,16 @@
         12727222656718550: !SetterAction
         - - 12727222656718550
           - [Bus_0_O_02_03]
+          - 2
+        - {comment: '', name: Apagar luces}
+        12735827844283640: !SetterAction
+        - - 12735827844283640
+          - [Bus_0_O_06_00]
+          - 1
+        - {comment: '', name: Prender luces}
+        12735827844285778: !SetterAction
+        - - 12735827844285778
+          - [Bus_0_O_06_00]
           - 2
         - {comment: '', name: Apagar luces}
       ports:
@@ -85,7 +99,7 @@
         - [Bus_0, 2, 13, 0]
         - {}
         Bus_0_O_06_00: !OutPort
-        - [Bus_0, 6, 0, 0]
+        - [Bus_0, 6, 0, 1]
         - {}
         Bus_0_O_06_01: !OutPort
         - [Bus_0, 6, 1, 0]
@@ -168,6 +182,48 @@
         Bus_0_O_08_13: !OutPort
         - [Bus_0, 8, 13, 0]
         - {}
+        Bus_0_O_12_00: !OutPort
+        - [Bus_0, 12, 0, 0]
+        - {}
+        Bus_0_O_12_01: !OutPort
+        - [Bus_0, 12, 1, 0]
+        - {}
+        Bus_0_O_12_02: !OutPort
+        - [Bus_0, 12, 2, 0]
+        - {}
+        Bus_0_O_12_03: !OutPort
+        - [Bus_0, 12, 3, 0]
+        - {}
+        Bus_0_O_12_04: !OutPort
+        - [Bus_0, 12, 4, 0]
+        - {}
+        Bus_0_O_12_05: !OutPort
+        - [Bus_0, 12, 5, 0]
+        - {}
+        Bus_0_O_12_06: !OutPort
+        - [Bus_0, 12, 6, 0]
+        - {}
+        Bus_0_O_12_07: !OutPort
+        - [Bus_0, 12, 7, 0]
+        - {}
+        Bus_0_O_12_08: !OutPort
+        - [Bus_0, 12, 8, 0]
+        - {}
+        Bus_0_O_12_09: !OutPort
+        - [Bus_0, 12, 9, 0]
+        - {}
+        Bus_0_O_12_10: !OutPort
+        - [Bus_0, 12, 10, 0]
+        - {}
+        Bus_0_O_12_11: !OutPort
+        - [Bus_0, 12, 11, 0]
+        - {}
+        Bus_0_O_12_12: !OutPort
+        - [Bus_0, 12, 12, 0]
+        - {}
+        Bus_0_O_12_13: !OutPort
+        - [Bus_0, 12, 13, 0]
+        - {}
     listener_core: !ListenerCore
     - []
     - in_ports: {Bus_0_I_02_00: null, Bus_0_I_02_01: null, Bus_0_I_02_02: null, Bus_0_I_02_03: null,
@@ -180,9 +236,13 @@
         Bus_0_I_08_00: null, Bus_0_I_08_01: null, Bus_0_I_08_02: null, Bus_0_I_08_03: null,
         Bus_0_I_08_04: null, Bus_0_I_08_05: null, Bus_0_I_08_06: null, Bus_0_I_08_07: null,
         Bus_0_I_08_08: null, Bus_0_I_08_09: null, Bus_0_I_08_10: null, Bus_0_I_08_11: null,
-        Bus_0_I_08_12: null, Bus_0_I_08_13: null, Bus_0_I_40_00: null, Bus_0_I_40_01: null,
-        Bus_0_I_40_02: null, Bus_0_I_40_03: null, Bus_0_I_40_04: null, Bus_0_I_40_05: null,
-        Bus_0_I_40_06: null, Bus_0_I_40_07: null, Bus_0_I_40_08: null}
+        Bus_0_I_08_12: null, Bus_0_I_08_13: null, Bus_0_I_12_00: null, Bus_0_I_12_01: null,
+        Bus_0_I_12_02: null, Bus_0_I_12_03: null, Bus_0_I_12_04: null, Bus_0_I_12_05: null,
+        Bus_0_I_12_06: null, Bus_0_I_12_07: null, Bus_0_I_12_08: null, Bus_0_I_12_09: null,
+        Bus_0_I_12_10: null, Bus_0_I_12_11: null, Bus_0_I_12_12: null, Bus_0_I_12_13: null,
+        Bus_0_I_40_00: null, Bus_0_I_40_01: null, Bus_0_I_40_02: null, Bus_0_I_40_03: null,
+        Bus_0_I_40_04: null, Bus_0_I_40_05: null, Bus_0_I_40_06: null, Bus_0_I_40_07: null,
+        Bus_0_I_40_08: null}
       listens:
         CE_12727217262209300: !CompositeEvent
         - - CE_12727217262209300
@@ -274,8 +334,53 @@
           - true
           - !!python/object:string.Template {template: not $CE_12727222656717178}
         - {comment: '', name: Hace 15 segundos que no hay movimiento}
+        CE_12735827844283112: !CompositeEvent
+        - - CE_12735827844283112
+          - '%d and %d'
+          - - !CompositeEvent
+              - - CE_12735827844281880
+                - (%d) and (%d)
+                - - !BooleanEvent
+                    - [BE_12735827844280600, Bus_0_I_08_00, false]
+                    - {comment: '', name: sensor_Bus_0_I_08_00_revert_(0)}
+                  - !BooleanEvent
+                    - [BE_12735827844281290, Bus_0_O_06_00, true]
+                    - {comment: '', name: luz_Bus_0_O_06_00_revert_(1)}
+                - null
+                - false
+              - {comment: '', name: Se detecto movimiento}
+            - !TimerEvent
+              - - TE_12735827844282210
+                - 2010-05-11 09:59:44.428254
+                - &id003 !!python/object/apply:datetime.timedelta [0, 2, 0]
+                - !!python/object/apply:datetime.timedelta [0, 0, 0]
+              - {comment: '', name: 'Timer de 0:00:02 delay si hay movimiento'}
+          - true
+          - !!python/object:string.Template {template: not $CE_12735827844281880}
+        - {comment: '', name: 'Se detecto movimiento hace 0:00:02 tiempo'}
+        CE_12735827844285430: !CompositeEvent
+        - - CE_12735827844285430
+          - '%d and %d'
+          - - !CompositeEvent
+              - - CE_12735827844284440
+                - '%d'
+                - - !BooleanEvent
+                    - [BE_12735827844283970, Bus_0_I_08_00, true]
+                    - {comment: '', name: sensor_Bus_0_I_08_00_revert_(1)}
+                - false
+                - false
+              - {comment: '', name: ''}
+            - !TimerEvent
+              - - TE_12735827844284780
+                - 2010-05-11 09:59:44.428501
+                - &id004 !!python/object/apply:datetime.timedelta [0, 10, 0]
+                - !!python/object/apply:datetime.timedelta [0, 0, 0]
+              - {comment: '', name: 'Timer de 0:00:10 sin movimiento'}
+          - true
+          - !!python/object:string.Template {template: not $CE_12735827844284440}
+        - {comment: '', name: Hace 15 segundos que no hay movimiento}
       listens_tail: [CE_12727217262210610, CE_12727222656718190, CE_12727222656715788,
-        CE_12727217262209300]
+        CE_12727217262209300, CE_12735827844283112, CE_12735827844285430]
       out_ports: {Bus_0_O_02_00: null, Bus_0_O_02_01: null, Bus_0_O_02_02: null, Bus_0_O_02_03: null,
         Bus_0_O_02_04: null, Bus_0_O_02_05: null, Bus_0_O_02_06: null, Bus_0_O_02_07: null,
         Bus_0_O_02_08: null, Bus_0_O_02_09: null, Bus_0_O_02_10: null, Bus_0_O_02_11: null,
@@ -286,7 +391,10 @@
         Bus_0_O_08_00: null, Bus_0_O_08_01: null, Bus_0_O_08_02: null, Bus_0_O_08_03: null,
         Bus_0_O_08_04: null, Bus_0_O_08_05: null, Bus_0_O_08_06: null, Bus_0_O_08_07: null,
         Bus_0_O_08_08: null, Bus_0_O_08_09: null, Bus_0_O_08_10: null, Bus_0_O_08_11: null,
-        Bus_0_O_08_12: null, Bus_0_O_08_13: null}
+        Bus_0_O_08_12: null, Bus_0_O_08_13: null, Bus_0_O_12_00: null, Bus_0_O_12_01: null,
+        Bus_0_O_12_02: null, Bus_0_O_12_03: null, Bus_0_O_12_04: null, Bus_0_O_12_05: null,
+        Bus_0_O_12_06: null, Bus_0_O_12_07: null, Bus_0_O_12_08: null, Bus_0_O_12_09: null,
+        Bus_0_O_12_10: null, Bus_0_O_12_11: null, Bus_0_O_12_12: null, Bus_0_O_12_13: null}
 - !ControlCore
   - []
   - map_objects:
@@ -316,3 +424,16 @@
         sensor_type: false
         sensors_ports: {Bus_0_I_06_03: false}
         timeout: *id002
+      LM_12735827844305090: !LightMap
+      - []
+      - comment: comentario dos debug
+        delay: *id003
+        events_actions:
+        - [CE_12735827844283112, 12735827844283640]
+        - [CE_12735827844285430, 12735827844285778]
+        id: LM_12735827844305090
+        light_ports: {Bus_0_O_06_00: false}
+        name: dos debug
+        sensor_type: false
+        sensors_ports: {Bus_0_I_08_00: false}
+        timeout: *id004
